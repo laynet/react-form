@@ -21,13 +21,24 @@ class App extends Component {
     this.state = {
       firstName: "",
       lastName: "",
-      age: ""
+      age: "",
+      gender: "",
+      location: "",
+      deitaryRestrictions: ""
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChage(event) {
-    const { value, name } = event.target;
-    //conditional logic if i need it
+  handleChange(event) {
+    const { name, value, type, checked } = event.target;
+    type === "checkbox"
+      ? this.setState({
+          [name]: checked
+        })
+      : this.setState({
+          [name]: value
+        });
   }
 
   render() {
@@ -36,32 +47,67 @@ class App extends Component {
         <form>
           <input
             name="firstName"
-            onChange={this.state.handleChange}
-            value={this.state.value}
+            value={this.state.name}
+            onChange={this.handleChange}
+            placeholder="First Name"
           />
           <br />
-          <input placeholder="Last Name" />
+          <input
+            name="lastName"
+            value={this.state.name}
+            onChange={this.handleChange}
+            placeholder="Last Name"
+          />
           <br />
-          <input placeholder="Age" />
+          <input
+            name="age"
+            value={this.state.name}
+            onChange={this.handleChange}
+            placeholder="Age"
+          />
           <br />
-
-          {/* Create radio buttons for gender here */}
+          <label />
+          <input
+            type="radio"
+            name="gender"
+            value="male"
+            checked={this.state.value === "male"}
+            onChange={this.handleChange}
+          />{" "}
+          Male
           <br />
-
-          {/* Create select box for location here */}
+          <lable />
+          <input
+            type="radio"
+            name="gender"
+            value="female"
+            checked={this.state.value === "female"}
+            onChange={this.handleChange}
+          />{" "}
+          Female
           <br />
-
+          <select
+            name="loaction"
+            value={this.state.value}
+            onChange={this.handleChange}
+          >
+            <option value="chicago">Chicago</option>
+            <option value="denver">Denver</option>
+            <option value="boise">Boise</option>
+          </select>
+          <br />
           {/* Create check boxes for dietary restrictions here */}
           <br />
-
           <button>Submit</button>
         </form>
         <hr />
         <h2>Entered information:</h2>
-        <p>Your name: {this.state.value}</p>
-        <p>Your age: {/* Age here */}</p>
-        <p>Your gender: {/* Gender here */}</p>
-        <p>Your destination: {/* Destination here */}</p>
+        <p>
+          Your name: {this.state.firstName} {this.state.lastName}
+        </p>
+        <p>Your age: {this.state.age}</p>
+        <p>Your gender: {this.state.gender}</p>
+        <p>Your destination: {this.state.destination}</p>
         <p>
           Your dietary restrictions:
           {/* Dietary restrictions here, comma separated */}
