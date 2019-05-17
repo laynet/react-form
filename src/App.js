@@ -1,26 +1,74 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+/**
+ * Challenge: Wire up the partially-finished travel form so that it works!
+ * Remember to use the concept of controlled forms
+ * https://reactjs.org/docs/forms.html
+ *
+ * All information should be populating the text below the form in real-time
+ * as you're filling it out
+ *
+ * This exercise is adapted from the V School curriculum on vanilla JS forms:
+ * https://coursework.vschool.io/travel-form/
+ *
+ * All of our challenges and learning resources are open for the public
+ * to play around with and learn from at https://coursework.vschool.io
+ */
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      firstName: "",
+      lastName: "",
+      age: ""
+    };
+  }
+
+  handleChage(event) {
+    const { value, name } = event.target;
+    //conditional logic if i need it
+  }
+
+  render() {
+    return (
+      <main>
+        <form>
+          <input
+            name="firstName"
+            onChange={this.state.handleChange}
+            value={this.state.value}
+          />
+          <br />
+          <input placeholder="Last Name" />
+          <br />
+          <input placeholder="Age" />
+          <br />
+
+          {/* Create radio buttons for gender here */}
+          <br />
+
+          {/* Create select box for location here */}
+          <br />
+
+          {/* Create check boxes for dietary restrictions here */}
+          <br />
+
+          <button>Submit</button>
+        </form>
+        <hr />
+        <h2>Entered information:</h2>
+        <p>Your name: {this.state.value}</p>
+        <p>Your age: {/* Age here */}</p>
+        <p>Your gender: {/* Gender here */}</p>
+        <p>Your destination: {/* Destination here */}</p>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Your dietary restrictions:
+          {/* Dietary restrictions here, comma separated */}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      </main>
+    );
+  }
 }
 
 export default App;
