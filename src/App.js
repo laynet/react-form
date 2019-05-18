@@ -24,10 +24,14 @@ class App extends Component {
       age: "",
       gender: "",
       location: "",
-      deitaryRestrictions: ""
+      deitaryRestrictions: "",
+      isVegan: "",
+      isKosher: "",
+      isGlutenFree: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -39,6 +43,11 @@ class App extends Component {
       : this.setState({
           [name]: value
         });
+  }
+
+  handleSubmit() {
+    alert("submitted");
+    event.preventDefault();
   }
 
   render() {
@@ -71,7 +80,7 @@ class App extends Component {
             type="radio"
             name="gender"
             value="male"
-            checked={this.state.value === "male"}
+            checked={this.state.gender === "male"}
             onChange={this.handleChange}
           />{" "}
           Male
@@ -81,7 +90,7 @@ class App extends Component {
             type="radio"
             name="gender"
             value="female"
-            checked={this.state.value === "female"}
+            checked={this.state.gender === "female"}
             onChange={this.handleChange}
           />{" "}
           Female
@@ -96,9 +105,39 @@ class App extends Component {
             <option value="boise">Boise</option>
           </select>
           <br />
-          {/* Create check boxes for dietary restrictions here */}
+          Dietary Restrictions:
           <br />
-          <button>Submit</button>
+          <label />
+          <input
+            type="checkbox"
+            name="isVegan"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+          Vegan?
+          <br />
+          <label />
+          <input
+            type="checkbox"
+            name="isKosher"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+          Kosher?
+          <br />
+          <label />
+          <input
+            type="checkbox"
+            name="isGlutenFree"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+          Gluten Free?
+          <br />
+          <br />
+          <button type="submit" onSubmit={this.handleSubmit} value="Submit">
+            Submit
+          </button>
         </form>
         <hr />
         <h2>Entered information:</h2>
@@ -110,7 +149,12 @@ class App extends Component {
         <p>Your destination: {this.state.destination}</p>
         <p>
           Your dietary restrictions:
-          {/* Dietary restrictions here, comma separated */}
+          <br />
+          Vegan: {this.state.isVegan ? "Yes" : "No"}
+          <br />
+          Kosher: {this.state.isKosher ? "Yes" : "No"}
+          <br />
+          Gluten Free: {this.state.isGlutenFree ? "Yes" : "No"}
         </p>
       </main>
     );
