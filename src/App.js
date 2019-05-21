@@ -47,7 +47,6 @@ class App extends Component {
 
   handleSubmit() {
     alert("submitted");
-    event.preventDefault();
   }
 
   render() {
